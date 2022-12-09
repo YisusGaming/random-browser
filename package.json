@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "name": "random-browser",
+    "version": "1.0.0",
+    "description": "Just a random browser...",
+    "main": "build/index.js",
+    "scripts": {
+        "start": "node build/index.js",
+        "build": "tsc",
+        "build:dev": "tsc -w"
+    },
+    "repository": "https://github.com/YisusGaming/random-browser",
+    "author": "YisusGaming",
+    "license": "CC-BY-NC-ND-4.0"
+}
