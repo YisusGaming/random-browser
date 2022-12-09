@@ -5,11 +5,14 @@
     "description": "Just a random browser...",
     "main": "build/index.js",
     "scripts": {
-        "start": "node build/index.js",
+        "start": "electron build/index.js",
         "build": "tsc",
         "build:dev": "tsc -w"
     },
     "repository": "https://github.com/YisusGaming/random-browser",
     "author": "YisusGaming",
-    "license": "CC-BY-NC-ND-4.0"
+    "license": "CC-BY-NC-ND-4.0",
+    "dependencies": {
+        "electron": "^22.0.0"
+    }
 }
