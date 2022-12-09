@@ -5,7 +5,7 @@
     "description": "Just a random browser...",
     "main": "build/index.js",
     "scripts": {
-        "start": "electron build/index.js",
+        "start": "cp -r ./src/public ./build && electron build/index.js",
         "build": "tsc",
         "build:dev": "tsc -w"
     },
