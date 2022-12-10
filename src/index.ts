@@ -15,12 +15,16 @@ app.on('ready', () => {
         show: false
     });
     main.loadFile(path.join(publicPath, 'index.html'));
-    main.on('ready-to-show', () => main.show());
+    main.on('ready-to-show', () => {
+        main.show();
+        main.maximize();
+    });
 });
 
 function searchWindow(url: string) {
     searchWin = new BrowserWindow({
-        title: `Searching ${url}...`
+        title: `Searching ${url}...`,
+        minimizable: false
     });
     searchWin.setMenu(null);
     searchWin.loadURL(url);
