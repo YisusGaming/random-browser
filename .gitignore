@@ -1,3 +1,6 @@
 # folders
 build/
 node_modules/
+
+# files
+yarn-error.log

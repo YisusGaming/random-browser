@@ -1,0 +1,3 @@
+{
+    "exec": "cp -r ./src/public ./build && electron"
+}

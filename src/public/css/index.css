@@ -7,3 +7,60 @@ body {
     background: #202020;
     color: #ffffff;
 }
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#legend {
+    font-family: sans-serif;
+    font-size: 2.8rem;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar #search {
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    background: #303030;
+    color: #ffffff;
+    border: 2px solid #303030;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+}
+
+.search-bar #search:focus {
+    outline: none;
+}
+
+.search-bar button {
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    background: #303030;
+    color: #ffffff;
+    border: 2px solid #303030;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px;
+    transition: 250ms;
+}
+
+.search-bar button:hover {
+    background: #404040;
+    border-color: #404040;
+}
+
+.search-bar button:active {
+    transition: none;
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #202020;
+}

@@ -7,6 +7,7 @@
     "scripts": {
         "start": "cp -r ./src/public ./build && electron build/index.js",
         "build": "tsc",
+        "start:dev": "nodemon build/index.js",
         "build:dev": "tsc -w"
     },
     "repository": "https://github.com/YisusGaming/random-browser",
@@ -14,5 +15,8 @@
     "license": "CC-BY-NC-ND-4.0",
     "dependencies": {
         "electron": "^22.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
     }
 }
