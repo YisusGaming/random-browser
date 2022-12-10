@@ -4,9 +4,9 @@
     An experiment that works like a browser, built using Electron.js and the power of google's search engine.
 </div>
 
-## Still under development
-Currently, this project **is not** finished.
-If you want to try this browser, you can set up a **development environment** on your computer by following the [development setup](#development-setup) guide.
+## Installation
+There's two methods to install Random Browser.
+First one is to download it from the latest release, and the other one is by following the [development setup](#development-setup) guide.
 
 ## Development setup
 
