@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu } from 'electron';
 import path from 'path';
 
 const publicPath = path.join(__dirname, 'public');
@@ -14,6 +14,7 @@ app.on('ready', () => {
         },
         show: false
     });
+    Menu.setApplicationMenu(null);
     main.loadFile(path.join(publicPath, 'index.html'));
     main.on('ready-to-show', () => {
         main.show();
