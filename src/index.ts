@@ -28,5 +28,14 @@ function searchWindow(url: string) {
 
 /* IPC */
 ipcMain.on('new-search', (event, search: string) => {
+    if (/[*.*]/g.test(search)) {
+        if (search.startsWith('https://') || search.startsWith('http://')) {
+            searchWindow(search)
+            return;
+        }
+        searchWindow(`https://${search}`);
+        return;
+    }
+    
     searchWindow(`https://google.com/search?q=${search}`);
 });
