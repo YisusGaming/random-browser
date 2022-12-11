@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +9,11 @@ body {
     position: relative;
     background: #202020;
     color: #ffffff;
+    transition: 250ms;
+}
+
+body:has(:focus) {
+    background: #000000;
 }
 
 .wrap {
@@ -18,7 +25,7 @@ body {
 }
 
 #legend {
-    font-family: sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 2.8rem;
 }
 
@@ -35,10 +42,29 @@ body {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding: 5px;
+    transition: 250ms;
 }
 
 .search-bar #search:focus {
     outline: none;
+}
+
+#search-bar-wrap {
+    display: flex;
+    transition: all 250ms;
+}
+
+#search-bar-wrap:has(:focus) {
+    transform: translateY(-65%);
+    font-size: 3rem;
+}
+
+#search-bar-wrap:has(:focus) #search {
+    font-size: 3rem;
+}
+
+#search-bar-wrap:has(:focus) button {
+    font-size: 3rem;
 }
 
 .search-bar button {
@@ -67,10 +93,32 @@ body {
 }
 
 #browser-version {
-    font-family: sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 1.3rem;
-    color: #404040;
+    color: #505050;
     position: absolute;
     bottom: 0;
+    right: 0;
     padding: 5px;
+}
+
+#settings-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2.3rem;
+    color: #707070;
+    text-decoration: none;
+    padding: 10px;
+    transition: all 250ms;
+}
+
+#settings-btn:hover {
+    color: #ffffff;
+    transform: rotateZ(45deg);
+}
+
+#settings-btn:active {
+    color: #000000;
+    transform: rotateZ(360deg);
 }

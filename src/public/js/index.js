@@ -9,3 +9,10 @@ document.querySelector('.search-bar').addEventListener('submit', (event) => {
     ipcRenderer.send('new-search', search.value);
     search.value = '';
 });
+
+/* Version Request */
+ipcRenderer.send('req-version');
+
+ipcRenderer.on('app-version', (event, version) => {
+    document.getElementById('browser-version').innerText = `Random Browser ${version}`;
+});

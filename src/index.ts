@@ -1,4 +1,6 @@
 import { app, BrowserWindow, ipcMain, Menu } from 'electron';
+import configs from './config/app.json';
+import userConfig from './config/user.json';
 import path from 'path';
 
 const publicPath = path.join(__dirname, 'public');
@@ -33,6 +35,8 @@ function searchWindow(url: string) {
 
 /* IPC */
 ipcMain.on('new-search', (event, search: string) => {
+    if (search.trim() == '') return;
+
     if (/[*.*]/g.test(search)) {
         if (search.startsWith('https://') || search.startsWith('http://')) {
             searchWindow(search)
@@ -43,4 +47,8 @@ ipcMain.on('new-search', (event, search: string) => {
     }
     
     searchWindow(`https://google.com/search?q=${search}`);
+});
+
+ipcMain.on('req-version', (event) => {
+    main.webContents.send('app-version', configs.version);
 });
