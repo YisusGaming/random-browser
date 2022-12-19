@@ -20,7 +20,7 @@ app.on('ready', () => {
         },
         show: false
     });
-    // Menu.setApplicationMenu(null);
+    Menu.setApplicationMenu(null);
     main.loadFile(path.join(publicPath, 'index.html'));
     main.on('ready-to-show', () => {
         main.show();
