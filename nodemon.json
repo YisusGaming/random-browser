@@ -1,4 +1,4 @@
 {
     "exec": "cp -r ./src/public ./build && electron",
-    "ignore": "public/js/"
+    "ignore": ["public/js/", "public/config/","build/config/"]
 }

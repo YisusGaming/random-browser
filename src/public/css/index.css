@@ -102,23 +102,61 @@ body:has(:focus) {
     padding: 5px;
 }
 
-#settings-btn {
+#about-btn {
     position: absolute;
     top: 0;
     left: 0;
     font-size: 2.3rem;
+    background: transparent;
     color: #707070;
     text-decoration: none;
     padding: 10px;
+    border: none;
+    transform-origin: center;
     transition: all 250ms;
 }
 
-#settings-btn:hover {
+#about-btn:hover {
     color: #ffffff;
-    transform: rotateZ(45deg);
 }
 
-#settings-btn:active {
+#about-btn:active {
     color: #000000;
-    transform: rotateZ(360deg);
+}
+
+#background-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2.3rem;
+    background: transparent;
+    color: #707070;
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    transform-origin: center;
+    transition: all 250ms;
+}
+
+#background-btn:hover {
+    color: #ffffff;
+}
+
+#background-btn:active {
+    color: #000000;
+}
+
+@media (max-width: 831px) {
+
+    #search-bar-wrap:has(:focus) {
+        transform: translateY(-103%);
+    }
+
+    #search-bar-wrap:has(:focus) #search {
+        font-size: 1.5rem;
+    }
+    
+    #search-bar-wrap:has(:focus) button {
+        font-size: 1.5rem;
+    }
 }

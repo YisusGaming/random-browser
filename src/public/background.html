@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Browser's Background</title>
+    <link rel="stylesheet" href="css/background.css">
+</head>
+<body>
+    <div class="wrap">
+        <h2>Change Background</h2>
+        <form id="change-background">
+            <label id="background-select" for="background">
+                Select File
+                <i class="fa-solid fa-image"></i>
+                <input type="file" accept="image/*" name="background" id="background">
+            </label>
+            <img id="selected-image" src="" alt="No image selected">
+            <button type="submit">Set Background Image</button>
+        </form>
+    </div>
+
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/3cba7f2206.js" crossorigin="anonymous"></script>
+    <!-- CUSTOM -->
+    <script src="js/background.js"></script>
+</body>
+</html>

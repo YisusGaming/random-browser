@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    background: #202020;
+    color: #ffffff;
+    transition: 250ms;
+}
+
+.wrap {
+    display: flex;
+    font-family: 'Raleway', sans-serif;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#change-background {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: #303030;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+#change-background #background {
+    display: none;
+}
+
+#change-background #background-select {
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    background: #202020;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#selected-image {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+#change-background button {
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid limegreen;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 15px;
+    transition: 250ms;
+}
+
+#change-background button:hover {
+    background: limegreen;
+}
+
+#change-background button:active {
+    transition: none;
+    color: limegreen;
+    background: #ffffff;
+    border-color: #ffffff;
+}
