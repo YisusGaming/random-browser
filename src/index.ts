@@ -104,3 +104,7 @@ ipcMain.on('set-background', (event, file: string) => {
 ipcMain.on('req-version', (event) => {
     main.webContents.send('app-version', configs.version);
 });
+
+ipcMain.on('clear-background', (event) => {
+    console.log('Event: Clear Background Image');
+});

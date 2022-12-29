@@ -13,3 +13,8 @@ document.getElementById('change-background').addEventListener('submit', (event) 
 
     ipcRenderer.send('set-background', filePath);
 });
+
+/* Clear Background Image */
+document.getElementById('clear-bg').addEventListener('click', (event) => {
+    ipcRenderer.send('clear-background');
+});
