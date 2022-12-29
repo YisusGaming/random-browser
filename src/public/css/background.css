@@ -72,3 +72,17 @@ body {
     background: #ffffff;
     border-color: #ffffff;
 }
+
+#change-background button#clear-bg {
+    border: 2px solid red;
+}
+
+#change-background button#clear-bg:hover {
+    background: red;
+}
+
+#change-background button#clear-bg:active {
+    color: red;
+    background: #ffffff;
+    border-color: #ffffff;
+}
