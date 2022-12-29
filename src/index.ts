@@ -106,5 +106,15 @@ ipcMain.on('req-version', (event) => {
 });
 
 ipcMain.on('clear-background', (event) => {
-    console.log('Event: Clear Background Image');
+    const rawConfig = fs.readFileSync(userConfigPath, { encoding: 'utf-8' });
+    const config = JSON.parse(rawConfig);
+
+    const newConfig = {
+        ...config,
+        background: ''
+    }
+    fs.writeFileSync(userConfigPath, JSON.stringify(newConfig, null, 4), { encoding: 'utf-8' });
+    backgroundSelect.close();
+    main.webContents.send('update-background', '');
+    main.loadFile(path.join(publicPath, 'index.html'));
 });
