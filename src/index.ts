@@ -31,6 +31,11 @@ app.on('ready', () => {
 
         main.webContents.send('update-background', configs.background);
     });
+    main.on('close', () => {
+        if (backgroundSelect != null) {
+            backgroundSelect.close()
+        }
+    });
 });
 
 function searchWindow(url: string) {

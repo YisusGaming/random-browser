@@ -2,7 +2,7 @@
     "private": true,
     "name": "random-browser",
     "productName": "Random Browser",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Just a random browser...",
     "main": "build/index.js",
     "scripts": {
