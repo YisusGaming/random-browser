@@ -33,7 +33,11 @@ app.on('ready', () => {
     });
     main.on('close', () => {
         if (backgroundSelect != null) {
-            backgroundSelect.close()
+            try {
+                backgroundSelect.close();
+            } catch(err) {
+                console.log(`[FAILED] close background select window [->] ${err}.`);
+            }
         }
     });
 });
