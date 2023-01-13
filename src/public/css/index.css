@@ -24,6 +24,36 @@ body:has(:focus) {
     height: 100vh;
 }
 
+.frame {
+    position: fixed;
+    -webkit-app-region: drag;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background: #101010;
+    padding: 8px 0;
+}
+
+.frame #buttons {
+    padding: 0 6px;
+}
+
+.frame #buttons button {
+    font-size: 1.6rem;
+    cursor: pointer;
+    background: transparent;
+    color: #606060;
+    border: none;
+    margin: 0 4px;
+    -webkit-app-region: no-drag;
+    transition: 250ms all;
+}
+
+.frame #buttons button:hover {
+    color: #ffffff;
+}
+
 #legend {
     font-family: 'Raleway', sans-serif;
     font-size: 2.8rem;
@@ -104,7 +134,7 @@ body:has(:focus) {
 
 #about-btn {
     position: absolute;
-    top: 0;
+    top: 40px;
     left: 0;
     font-size: 2.3rem;
     background: transparent;
@@ -126,7 +156,7 @@ body:has(:focus) {
 
 #background-btn {
     position: absolute;
-    top: 0;
+    top: 40px;
     right: 0;
     font-size: 2.3rem;
     background: transparent;

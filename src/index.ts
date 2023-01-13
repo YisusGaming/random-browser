@@ -18,6 +18,7 @@ app.on('ready', () => {
             nodeIntegration: true,
             contextIsolation: false
         },
+        frame: false,
         show: false
     });
     Menu.setApplicationMenu(null);
