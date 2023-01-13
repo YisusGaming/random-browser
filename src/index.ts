@@ -79,6 +79,21 @@ function selectBackground() {
 }
 
 /* IPC */
+ipcMain.on('minimize-main', (event) => {
+    // Minimize the main window
+    main.minimize();
+});
+
+ipcMain.on('maximize-main', (event) => {
+    // Maximize the main window
+    main.maximize();
+});
+
+ipcMain.on('close-main', (event) => {
+    // Close the main window
+    main.close();
+});
+
 ipcMain.on('new-search', (event, search: string) => {
     if (search.trim() == '') return;
 

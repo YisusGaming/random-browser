@@ -1,5 +1,20 @@
 const { ipcRenderer } = require('electron');
 
+/* Window Frame */
+
+// Minimzize button
+document.getElementById('minimize').addEventListener('click', () => {
+    ipcRenderer.send('minimize-main');
+});
+// Maximize button
+document.getElementById('maximize').addEventListener('click', () => {
+    ipcRenderer.send('maximize-main');
+});
+// Close button
+document.getElementById('close').addEventListener('click', () => {
+    ipcRenderer.send('close-main');
+});
+
 /* Configs */
 ipcRenderer.on('update-background', (event, file) => {
     console.log(`Updating background image to ${file}`);
