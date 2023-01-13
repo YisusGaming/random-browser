@@ -1,5 +1,10 @@
 const { ipcRenderer } = require('electron');
 
+/* Tabs */
+ipcRenderer.on('new-tab', (event, tab) => {
+    alert(tab);
+});
+
 /* Window Frame */
 // New Tab Button
 document.getElementById('new-tab').addEventListener('click', () => {
