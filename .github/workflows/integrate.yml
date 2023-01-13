@@ -1,4 +1,4 @@
-name: TypeScript Build Test
+name: Build TypeScript Test
 
 on:
   pull_request:
