@@ -79,6 +79,10 @@ function selectBackground() {
 }
 
 /* IPC */
+ipcMain.on('new-tab', (event) => {
+    console.log(`[OK] create new tab`);
+});
+
 ipcMain.on('minimize-main', (event) => {
     // Minimize the main window
     main.minimize();
