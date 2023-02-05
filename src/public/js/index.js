@@ -1,15 +1,6 @@
 const { ipcRenderer } = require('electron');
 
-/* Tabs */
-ipcRenderer.on('new-tab', (event, tab) => {
-    alert(tab);
-});
-
 /* Window Frame */
-// New Tab Button
-document.getElementById('new-tab').addEventListener('click', () => {
-    ipcRenderer.send('new-tab');
-});
 // Minimzize button
 document.getElementById('minimize').addEventListener('click', () => {
     ipcRenderer.send('minimize-main');

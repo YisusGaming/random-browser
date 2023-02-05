@@ -71,12 +71,6 @@ function selectBackground() {
     backgroundSelect.loadFile(path.join(publicPath, 'background.html'));
 }
 
-/* IPC */
-ipcMain.on('new-tab', (event) => {
-    console.log(`[OK] create new tab`);
-    main.webContents.send('new-tab', TabManager.createNewTab('https://yisusgaming.github.io').build());
-});
-
 ipcMain.on('minimize-main', (event) => {
     // Minimize the main window
     main.minimize();
