@@ -38,22 +38,14 @@ app.on('ready', () => {
 function searchWindow(url: string) {
     searchWin = new BrowserWindow({
         title: `Searching ${url}...`,
-        minimizable: false
+        parent: main,
+        modal: true,
+        frame: false,
+        width: main.getSize()[0],
+        height: main.getSize()[1],
+        resizable: false
     });
     searchWin.loadURL(url);
-
-    const menuTemplate: Array<MenuItemConstructorOptions> = [
-        {
-            label: 'Refresh',
-            role: 'reload'
-        },
-        {
-            label: 'Inspect',
-            role: 'toggleDevTools'
-        }
-    ]
-
-    searchWin.setMenu(Menu.buildFromTemplate(menuTemplate));
 }
 
 function selectBackground() {
