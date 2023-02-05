@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain, Menu, MenuItemConstructorOptions } from 'electron';
-import BrowserTab from './tabs/BrowserTab.js';
+import TabManager from './tabs/TabManager.js';
 import configs from './config/app.json';
 import './config/user.json';
 import fs from 'fs';
@@ -82,7 +82,7 @@ function selectBackground() {
 /* IPC */
 ipcMain.on('new-tab', (event) => {
     console.log(`[OK] create new tab`);
-    main.webContents.send('new-tab', new BrowserTab(`https://yisusgaming.github.io`, 0).build());
+    main.webContents.send('new-tab', TabManager.createNewTab('https://yisusgaming.github.io').build());
 });
 
 ipcMain.on('minimize-main', (event) => {
