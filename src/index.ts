@@ -33,15 +33,6 @@ app.on('ready', () => {
 
         main.webContents.send('update-background', configs.background);
     });
-    main.on('close', () => {
-        if (backgroundSelect != null) {
-            try {
-                backgroundSelect.close();
-            } catch(err) {
-                console.log(`[FAILED] close background select window [->] ${err}.`);
-            }
-        }
-    });
 });
 
 function searchWindow(url: string) {
@@ -73,7 +64,8 @@ function selectBackground() {
             contextIsolation: false
         },
         minimizable: false,
-        maximizable: false
+        maximizable: false,
+        parent: main
     });
     backgroundSelect.setMenu(null);
     backgroundSelect.loadFile(path.join(publicPath, 'background.html'));
