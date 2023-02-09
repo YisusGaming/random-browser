@@ -1,13 +1,16 @@
 import { app, BrowserWindow, ipcMain, Menu, MenuItemConstructorOptions } from 'electron';
-import TabManager from './tabs/TabManager.js';
+import Logger from './logs/Logger.js';
 import configs from './config/app.json';
 import './config/user.json';
 import fs from 'fs';
 import path from 'path';
 
+const logger = new Logger(configs.version); // Instance of the logger class for future console logs.
+
 const publicPath = path.join(__dirname, 'public');
 const userConfigPath = path.join(__dirname, 'config', 'user.json');
-console.log(`Looking for user's configs in ${userConfigPath}`);
+// console.log(`Looking for user's configs in ${userConfigPath}`);
+logger.logMessage(`Looking for user's configs in ${userConfigPath}`);
 
 let main : BrowserWindow;
 let tabModal : BrowserWindow;
