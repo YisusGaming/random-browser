@@ -16,6 +16,7 @@ let main : BrowserWindow;
 let tabModal : BrowserWindow;
 let backgroundSelect : BrowserWindow;
 app.on('ready', () => {
+    logger.logMessage(`App is ready.`);
     main = new BrowserWindow({
         title: 'Random Browser - Loading...',
         webPreferences: {
@@ -28,6 +29,7 @@ app.on('ready', () => {
     Menu.setApplicationMenu(null);
     main.loadFile(path.join(publicPath, 'index.html'));
     main.on('ready-to-show', () => {
+        logger.logMessage(`Main window ready to show.`);
         main.show();
         main.maximize();
 

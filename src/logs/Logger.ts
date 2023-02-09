@@ -29,7 +29,7 @@ export default class Logger {
     }
 
     /**
-     * Prints an string or an Error to stderr.
+     * Prints an `string` or an `Error` to `stderr`.
      */
     logError(err: string | Error, origin: { file: string; line: number }): void {
         if (typeof err == 'string') {
