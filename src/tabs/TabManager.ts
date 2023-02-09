@@ -1,23 +1,20 @@
+import { BrowserWindow } from "electron";
 import BrowserTab from "./BrowserTab.js";
 
 class TabManager {
-    #tabs: BrowserTab[];
-    #activeTab: number
+    private tabs: BrowserTab[];
     constructor() {
-        this.#tabs = [];
-        this.#activeTab = 0;
+        this.tabs = [];
     }
 
-    createNewTab(url: string) : BrowserTab {
-        let id = this.#tabs.length - 1;
-        let tab = new BrowserTab(url, id >= 0 ? id : 0);
-        this.#tabs.push(tab);
+    /**
+     * Creates a new tab and stores it in a list of tabs.
+     */
+    public createTab(url: string, parent: BrowserWindow): BrowserTab {
+        let tab = new BrowserTab(url, parent);
+        this.tabs.push(tab);
 
         return tab;
-    }
-
-    updateActiveTab(tabId: number) {
-        this.#activeTab = tabId;
     }
 }
 

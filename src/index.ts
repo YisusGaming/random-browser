@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain, Menu, MenuItemConstructorOptions } from 'electron';
 import Logger from './logs/Logger.js';
+import TabManager from './tabs/TabManager.js';
 import configs from './config/app.json';
 import './config/user.json';
 import fs from 'fs';
@@ -41,26 +42,8 @@ app.on('ready', () => {
 });
 
 function spawnTab(url: string) {
-    tabModal = new BrowserWindow({
-        title: `Searching ${url}...`,
-        parent: main,
-        modal: true,
-        frame: false,
-        width: main.getSize()[0],
-        height: main.getSize()[1],
-        x: main.getBounds().x,
-        y: main.getBounds().y,
-        resizable: false
-    });
-
-    // Center the tab modal if the main window is maximized to make sure it fills all the screen.
-    if (main.isMaximized()) {
-        tabModal.setBounds({
-            x: 0,
-            y: 0
-        });
-    }
-    tabModal.loadURL(url);
+    // Create a new tab and right after build it so the tab shows up.
+    tabModal = TabManager.createTab(url, main).build();
 }
 
 function selectBackground() {
