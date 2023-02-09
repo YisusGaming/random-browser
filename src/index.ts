@@ -52,6 +52,14 @@ function spawnTab(url: string) {
         y: main.getBounds().y,
         resizable: false
     });
+
+    // Center the tab modal if the main window is maximized to make sure it fills all the screen.
+    if (main.isMaximized()) {
+        tabModal.setBounds({
+            x: 0,
+            y: 0
+        });
+    }
     tabModal.loadURL(url);
 }
 
