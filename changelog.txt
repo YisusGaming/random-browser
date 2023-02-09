@@ -3,4 +3,7 @@
         [DONE] Custom App Frame.
         [WORKING] New Tab System.
     }
+    Fixes => {
+        [DONE] Fixed Random Browser's Page Link.
+    }
 }

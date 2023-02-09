@@ -22,7 +22,7 @@ ipcRenderer.on('update-background', (event, file) => {
 
 /* Learn Page */
 document.getElementById('about-btn').addEventListener('click', (event) => {
-    ipcRenderer.send('new-search', 'https://yisusgaming.github.io/random-browser');
+    ipcRenderer.send('new-search', 'https://yisusgaming.github.io/random-browser-page');
 });
 
 /* Browser Background */
