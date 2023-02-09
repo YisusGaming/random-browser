@@ -10,7 +10,7 @@ const userConfigPath = path.join(__dirname, 'config', 'user.json');
 console.log(`Looking for user's configs in ${userConfigPath}`);
 
 let main : BrowserWindow;
-let searchWin : BrowserWindow;
+let tabModal : BrowserWindow;
 let backgroundSelect : BrowserWindow;
 app.on('ready', () => {
     main = new BrowserWindow({
@@ -35,17 +35,19 @@ app.on('ready', () => {
     });
 });
 
-function searchWindow(url: string) {
-    searchWin = new BrowserWindow({
+function spawnTab(url: string) {
+    tabModal = new BrowserWindow({
         title: `Searching ${url}...`,
         parent: main,
         modal: true,
         frame: false,
         width: main.getSize()[0],
         height: main.getSize()[1],
+        x: main.getBounds().x,
+        y: main.getBounds().y,
         resizable: false
     });
-    searchWin.loadURL(url);
+    tabModal.loadURL(url);
 }
 
 function selectBackground() {
@@ -83,14 +85,14 @@ ipcMain.on('new-search', (event, search: string) => {
 
     if (/[*.*]/g.test(search)) {
         if (search.startsWith('https://') || search.startsWith('http://')) {
-            searchWindow(search);
+            spawnTab(search);
             return;
         }
-        searchWindow(`https://${search}`);
+        spawnTab(`https://${search}`);
         return;
     }
     
-    searchWindow(`https://google.com/search?q=${search}`);
+    spawnTab(`https://google.com/search?q=${search}`);
 });
 
 ipcMain.on('new-background-image', (event) => {
