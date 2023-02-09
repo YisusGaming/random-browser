@@ -1,4 +1,4 @@
-import { BrowserWindow } from 'electron';
+import { BrowserWindow, Menu, MenuItemConstructorOptions } from 'electron';
 
 /**
  * The BrowserTab class.
@@ -7,14 +7,42 @@ import { BrowserWindow } from 'electron';
 export default class BrowserTab {
     private url: string;
     private parent: BrowserWindow;
+    private tabId: number;
 
     /**
      * @param url The URL the tab is pointing to.
      * @param parent The parent of this modal. It should be the main browser's window.
+     * @param tabId A zero-based id that identifies this tab. Provided automatically if the tab instance was created with `TabManager.createTab`.
      */
-    constructor(url: string, parent: BrowserWindow) {
+    constructor(url: string, parent: BrowserWindow, tabId: number) {
         this.url = url;
         this.parent = parent;
+        this.tabId = tabId;
+    }
+
+    private tabMenu(): Menu {
+        let template: MenuItemConstructorOptions[] = [
+            {
+                label: `Tab ${this.tabId + 1}`
+            },
+            {
+                type: 'separator'
+            },
+            {
+                label: 'Close Tab',
+                role: 'close'
+            },
+            {
+                label: 'Refresh Page',
+                role: 'reload'
+            },
+            {
+                label: 'Inspect page',
+                role: 'toggleDevTools'
+            }
+        ];
+
+        return Menu.buildFromTemplate(template);
     }
 
     /**
@@ -32,6 +60,7 @@ export default class BrowserTab {
             y: this.parent.getBounds().y,
             resizable: false,
         });
+        tabModal.setMenu(this.tabMenu());
 
         // Center the tab modal if the main window is maximized to make sure it fills all the screen.
         if (this.parent.isMaximized()) {
