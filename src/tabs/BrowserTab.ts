@@ -23,22 +23,57 @@ export default class BrowserTab {
     private tabMenu(): Menu {
         let template: MenuItemConstructorOptions[] = [
             {
-                label: `Tab ${this.tabId + 1}`
+                type: 'separator'
+            },
+            {
+                label: 'Page Actions',
+                submenu: [
+                    {
+                        role: 'copy'
+                    },
+                    {
+                        role: 'cut'
+                    },
+                    {
+                        role: 'paste'
+                    },
+                    {
+                        role: 'undo'
+                    },
+                    {
+                        role: 'redo'
+                    },
+                    {
+                        label: 'Inspect',
+                        role: 'toggleDevTools'
+                    }
+                ]
             },
             {
                 type: 'separator'
             },
             {
-                label: 'Close Tab',
-                role: 'close'
-            },
-            {
-                label: 'Refresh Page',
-                role: 'reload'
-            },
-            {
-                label: 'Inspect page',
-                role: 'toggleDevTools'
+                label: `Tab ${this.tabId + 1} Controls`,
+                submenu: [
+                    {
+                        label: 'Close Tab',
+                        role: 'close'
+                    },
+                    {
+                        label: 'Zoom',
+                        submenu: [
+                            {
+                                role: 'zoomIn'
+                            },
+                            {
+                                role: 'zoomOut'
+                            },
+                            {
+                                role: 'resetZoom'
+                            }
+                        ]
+                    }
+                ]
             }
         ];
 
@@ -60,7 +95,12 @@ export default class BrowserTab {
             y: this.parent.getBounds().y,
             resizable: false,
         });
-        tabModal.setMenu(this.tabMenu());
+
+        tabModal.webContents.addListener('context-menu', () => {
+            this.tabMenu().popup({
+                window: tabModal
+            });
+        });
 
         // Center the tab modal if the main window is maximized to make sure it fills all the screen.
         if (this.parent.isMaximized()) {
