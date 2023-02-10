@@ -24,8 +24,36 @@ export default class BrowserTab {
         this.currentUrl = 0;
     }
 
-    private tabMenu(): Menu {
+    /**
+     * @param window The window that owns this menu.
+     */
+    private tabMenu(window: BrowserWindow): Menu {
         let template: MenuItemConstructorOptions[] = [
+            {
+                label: 'Go to First',
+                click: () => {
+                    this.currentUrl = 0;
+                    window.loadURL(this.visitedUrls[this.currentUrl]);
+                }
+            },
+            {
+                label: 'Go Back',
+                click: () => {
+                    if (this.currentUrl <= 0) return;
+                    
+                    this.currentUrl--;
+                    window.loadURL(this.visitedUrls[this.currentUrl]);
+                }
+            },
+            {
+                label: 'Go Forwards',
+                click: () => {
+                    if (this.currentUrl + 1 >= this.visitedUrls.length) return;
+
+                    this.currentUrl++;
+                    window.loadURL(this.visitedUrls[this.currentUrl]);
+                }
+            },
             {
                 type: 'separator'
             },
@@ -101,13 +129,15 @@ export default class BrowserTab {
         });
 
         tabModal.webContents.addListener('context-menu', () => {
-            this.tabMenu().popup({
+            this.tabMenu(tabModal).popup({
                 window: tabModal
             });
         });
 
         tabModal.webContents.addListener('did-navigate', (event, url) => {
-            this.visitedUrls.push(url);
+            if (this.visitedUrls.lastIndexOf(url) == -1) {
+                this.visitedUrls.push(url);
+            }
             let index = this.visitedUrls.lastIndexOf(url);
             // If index is equal or greater than 0 use index,
             // otherwise, use 0.
