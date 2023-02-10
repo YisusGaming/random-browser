@@ -6,19 +6,16 @@ import { BrowserWindow, Menu, MenuItemConstructorOptions } from 'electron';
  */
 export default class BrowserTab {
     private url: string;
-    private tabHtmlPath: string;
     private parent: BrowserWindow;
     private tabId: number;
 
     /**
      * @param url The URL the tab is pointing to.
-     * @param tabHtmlPath The path to the `tab.html` file.
      * @param parent The parent of this modal. It should be the main browser's window.
      * @param tabId A zero-based id that identifies this tab. Provided automatically if the tab instance was created with `TabManager.createTab`.
      */
-    constructor(url: string, tabHtmlPath: string, parent: BrowserWindow, tabId: number) {
+    constructor(url: string, parent: BrowserWindow, tabId: number) {
         this.url = url;
-        this.tabHtmlPath = tabHtmlPath;
         this.parent = parent;
         this.tabId = tabId;
     }
@@ -112,7 +109,7 @@ export default class BrowserTab {
                 y: 0,
             });
         }
-        tabModal.loadFile(this.tabHtmlPath);
+        tabModal.loadURL(this.url);
 
         return tabModal;
     }
