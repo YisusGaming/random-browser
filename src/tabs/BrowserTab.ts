@@ -8,6 +8,8 @@ export default class BrowserTab {
     private url: string;
     private parent: BrowserWindow;
     private tabId: number;
+    private visitedUrls: string[];
+    private currentUrl: number;
 
     /**
      * @param url The URL the tab is pointing to.
@@ -18,6 +20,8 @@ export default class BrowserTab {
         this.url = url;
         this.parent = parent;
         this.tabId = tabId;
+        this.visitedUrls = [];
+        this.currentUrl = 0;
     }
 
     private tabMenu(): Menu {
@@ -100,6 +104,16 @@ export default class BrowserTab {
             this.tabMenu().popup({
                 window: tabModal
             });
+        });
+
+        tabModal.webContents.addListener('did-navigate', (event, url) => {
+            this.visitedUrls.push(url);
+            let index = this.visitedUrls.lastIndexOf(url);
+            // If index is equal or greater than 0 use index,
+            // otherwise, use 0.
+            this.currentUrl = index >= 0 ? index : 0;
+
+            console.log(this.visitedUrls, this.currentUrl);
         });
 
         // Center the tab modal if the main window is maximized to make sure it fills all the screen.
