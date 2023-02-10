@@ -43,7 +43,7 @@ app.on('ready', () => {
 
 function spawnTab(url: string) {
     // Create a new tab and right after build it so the tab shows up.
-    tabModal = TabManager.createTab(url, main).build();
+    tabModal = TabManager.createTab(url, path.join(publicPath, 'tab.html'), main).build();
 }
 
 function selectBackground() {
