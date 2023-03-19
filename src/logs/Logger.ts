@@ -22,6 +22,15 @@ export default class Logger {
     }
 
     /**
+     * Prints a message to the `stdout` with a label
+     * saying it should be removed before the app
+     * gets to production.
+     */
+    tempLogMessage(msg: string): void {
+        console.log(`The following log is temporal and should be removed before production.\n[TEMPORAL LOG:${this.browserVersion}] => ${msg}`);
+    }
+
+    /**
      * Prints a warning to the `stderr`.
      */
     logWarning(warn: string): void {

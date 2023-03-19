@@ -6,7 +6,10 @@ import './config/user.json';
 import fs from 'fs';
 import path from 'path';
 
-const logger = new Logger(configs.version); // Instance of the logger class for future console logs.
+// Instance of the logger class for future console logs.
+// Also exports the instance for use in other files
+// without the need of reinstance the class again.
+export const logger = new Logger(configs.version);
 
 const publicPath = path.join(__dirname, 'public');
 const userConfigPath = path.join(__dirname, 'config', 'user.json');
