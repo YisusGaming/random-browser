@@ -11,7 +11,7 @@
         "start:dev": "nodemon build/index.js",
         "build:dev": "tsc -w",
         "pack-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/icon.icns --prune=true --out=dist",
-        "pack-win": "electron-packager . random-browser --overwrite --asar=false --platform=win32 --arch=ia32 --icon=assets/icons/icon.ico --prune=true --out=dist --version-string.CompanyName=YisusGaming --version-string.FileDescription=\"Just a random browser...\" --version-string.ProductName=\"Random Browser\"",    
+        "pack-win": "electron-packager . random-browser --overwrite --asar=false --platform=win32 --arch=ia32 --icon=assets/icons/icon.ico --prune=true --out=dist --version-string.CompanyName=YisusGaming --version-string.FileDescription=\"Just a random browser...\" --version-string.ProductName=\"Random Browser\"",
         "pack-linux": "electron-packager . random-browser --overwrite --asar=false --platform=linux --arch=x64 --icon=assets/icons/1024x1024.png --prune=true --out=dist"
     },
     "repository": "https://github.com/YisusGaming/random-browser",
@@ -22,6 +22,7 @@
     },
     "devDependencies": {
         "electron-packager": "^17.1.1",
-        "nodemon": "^2.0.20"
+        "nodemon": "^2.0.20",
+        "typescript": "^4.9.5"
     }
 }
