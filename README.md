@@ -40,7 +40,7 @@ Once everything is installed, build the typescript code:
 ```bash
 yarn build
 ```
-**NOTE: typescript is not listed as a dependency in package.json. It should be installed globally on your computer, if not, you can install it globally or in the cloned repository.**
+
 
 And **you're done**! Now run:
 ```bash
@@ -75,7 +75,6 @@ Once everything is installed, build the typescript code:
 ```bash
 yarn build
 ```
-**NOTE: typescript is not listed as a dependency in package.json. It should be installed globally on your computer, if not, you can install it globally or in the cloned repository.**
 
 Now, you have to run the project from the command line before packaging, just run:
 
@@ -87,7 +86,7 @@ When you do that, the public folder (where all resources for views are) will be 
 
 > If something goes wrong, you can copy the folder manually. Just copy **./src/public/** to **./build/**
 
-Once this is done and the browser's window is now open, you can close the browser and finally package the app:
+Once this is done and the browser's window is open, you can close the browser and finally package the app:
 
 For Windows:
 ```bash
@@ -107,10 +106,10 @@ yarn pack-mac
 When that's finished, you should see a folder named **dist**, inside of it you can find executable.
 
 ## Contributing setup
-Sorry, this setup is not documented yet and neither is the project's code. You can follow the [development setup](#development-setup), just make sure to follow these rules:
+> **<!>** Currently the project's code is not so well documented as I'd like. I'll be working on documenting everything better so contributors can more easily understand what the code is doing. If you'd like to contribute, I'm glad having your help on this project, just know that it may be a little confusing for now.
 
-- **USE** Yarn
-- Make sure to exclude any file that shouldn't be uploaded to github.
+<!-- TODO: Create the contributing file -->
+Before you can get to contributing, please read the `contributing` file.
 
 # License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Random Browser</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">YisusGaming</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
