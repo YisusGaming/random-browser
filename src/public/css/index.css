@@ -24,19 +24,69 @@ body:has(:focus) {
     height: 100vh;
 }
 
+#tabs-container {
+    -webkit-app-region: no-drag;
+    display: flex;
+    flex-direction: row;
+    grid-area: tabs;
+    width: 70%;
+    overflow-x: scroll;
+}
+
+#tabs-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+#tabs-container::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+.tab {
+    -webkit-app-region: no-drag;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    max-width: 100px;
+    margin: 0 4px;
+    background: #202020;
+}
+
+.tab p {
+    font-family: 'Raleway', sans-serif;
+}
+
+.tab button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.tab button:hover {
+    color: lightcoral;
+}
+
+.tab button:active {
+    color: red;
+}
+
 .frame {
     position: fixed;
     -webkit-app-region: drag;
-    width: 100%;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+        "tabs buttons";
     background: #101010;
     padding: 8px 0;
 }
 
 .frame #buttons {
     padding: 0 6px;
+    margin: auto;
+    grid-area: buttons;
 }
 
 .frame #buttons button {
