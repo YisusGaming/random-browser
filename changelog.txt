@@ -1,7 +1,11 @@
-[1.2.2 -> 2.0.0] => {
+[2.0.0] => {
     Features => {
         [DONE] Custom App Frame.
         [WORKING] New Tab System.
+        [PLANNED] New Settings Menu.
+        [PLANNED] New Sidebar.
+        [PLANNED] Search History.
+        [PLANNED] Featured Sites.
     }
     Fixes => {
         [DONE] Fixed Random Browser's Page Link.
