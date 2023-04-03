@@ -18,6 +18,9 @@ class TabManager {
         return tab;
     }
 
+    /**
+     * Deletes a tab from the tab list.
+     */
     public deleteTab(tabId: number) {
         this.tabs.filter((tab) => {
             tab.TabId != tabId;
