@@ -24,6 +24,10 @@ export default class BrowserTab {
         this.currentUrl = 0;
     }
 
+    public get TabId() : number {
+        return this.tabId;
+    }
+
     /**
      * @param window The window that owns this menu.
      */
