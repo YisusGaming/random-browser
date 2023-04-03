@@ -154,6 +154,7 @@ export default class BrowserTab {
             });
         }
         tabModal.loadURL(this.url);
+        this.parent.webContents.send('tab-builded', this.tabId);
 
         return tabModal;
     }
