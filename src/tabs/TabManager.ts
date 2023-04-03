@@ -22,8 +22,10 @@ class TabManager {
      * Deletes a tab from the tab list.
      */
     public deleteTab(tabId: number) {
-        this.tabs.filter((tab) => {
-            tab.TabId != tabId;
+        this.tabs = this.tabs.filter((tab) => {
+            console.log(`${tab.TabId} != ${tabId}`);
+            console.log(tab.TabId != tabId);
+            return tab.TabId != tabId;
         });
         console.log(this.tabs);
     }

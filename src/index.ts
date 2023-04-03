@@ -79,6 +79,10 @@ ipcMain.on('close-main', (event) => {
     main.close();
 });
 
+ipcMain.on('tab-deleted', (event, tabId: number) => {
+    TabManager.deleteTab(tabId);
+});
+
 ipcMain.on('new-search', (event, search: string) => {
     if (search.trim() == '') return;
 
