@@ -17,6 +17,13 @@ class TabManager {
 
         return tab;
     }
+
+    public deleteTab(tabId: number) {
+        this.tabs.filter((tab) => {
+            tab.TabId != tabId;
+        });
+        console.log(this.tabs);
+    }
 }
 
 export default new TabManager();
