@@ -1,4 +1,5 @@
 const { ipcRenderer } = require('electron');
+const tabsContainer = document.getElementById('tabs-container');
 
 /* Window Frame */
 // Minimzize button
@@ -12,6 +13,18 @@ document.getElementById('maximize').addEventListener('click', () => {
 // Close button
 document.getElementById('close').addEventListener('click', () => {
     ipcRenderer.send('close-main');
+});
+
+/* Tabs */
+ipcRenderer.on('tab-builded', (event, tabId) => {
+    const tabTemplate = `
+        <div class="tab">
+            <p>Tab ${tabId + 1}</p>
+            <button title="Delete Tab">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>`;
+    tabsContainer.innerHTML += tabTemplate;
 });
 
 /* Configs */
