@@ -23,11 +23,8 @@ class TabManager {
      */
     public deleteTab(tabId: number) {
         this.tabs = this.tabs.filter((tab) => {
-            console.log(`${tab.TabId} != ${tabId}`);
-            console.log(tab.TabId != tabId);
             return tab.TabId != tabId;
         });
-        console.log(this.tabs);
     }
 }
 
