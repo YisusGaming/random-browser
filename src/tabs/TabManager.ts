@@ -24,7 +24,10 @@ class TabManager {
      * tabs array.
      */
     public openTab(tabId: number): void {
-        let tab = this.tabs[tabId];
+        let tabIndex = this.tabs.findIndex((val, index) => {
+            return val.TabId == tabId;
+        });
+        let tab = this.tabs[tabIndex];
         if (tab) {
             tab.build();
         } else {
@@ -39,9 +42,7 @@ class TabManager {
      * Deletes a tab from the tab list.
      */
     public deleteTab(tabId: number): void {
-        this.tabs = this.tabs.filter((tab) => {
-            return tab.TabId != tabId;
-        });
+        this.tabs.splice(tabId, 1);
     }
 }
 
