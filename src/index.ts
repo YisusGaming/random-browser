@@ -80,7 +80,7 @@ ipcMain.on('close-main', (event) => {
 });
 
 ipcMain.on('open-tab', (event, tabId: number) => {
-    logger.logMessage(`Open tab with id ${tabId}`);
+    TabManager.openTab(tabId);
 });
 
 ipcMain.on('tab-deleted', (event, tabId: number) => {
