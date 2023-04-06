@@ -19,17 +19,22 @@ document.getElementById('close').addEventListener('click', () => {
 ipcRenderer.on('tab-builded', (event, tabId) => {
     const tabTemplate = `
         <div class="tab">
-            <p>Tab ${tabId + 1}</p>
-            <button data-tab-id="${tabId}" id="delete-tab-btn" title="Delete Tab">
+            <p class="tab-title" data-tab-id="${tabId}">Tab ${tabId + 1}</p>
+            <button data-tab-id="${tabId}" class="delete-tab-btn" title="Delete Tab">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>`;
     tabsContainer.innerHTML += tabTemplate;
-    document.querySelectorAll('#delete-tab-btn').forEach(( /** @type {HTMLButtonElement} */ btn) => {
+    document.querySelectorAll('.delete-tab-btn').forEach(( /** @type {HTMLButtonElement} */ btn) => {
         btn.onclick = () => {
             btn.parentElement.remove();
             ipcRenderer.send('tab-deleted', Number(btn.dataset.tabId));
         }
+    });
+    document.querySelectorAll(".tab-title").forEach(( /** @type {HTMLParagraphElement} */ title) => {
+        title.onclick = () => {
+            ipcRenderer.send('open-tab', Number(title.dataset.tabId));
+        };
     });
 });
 

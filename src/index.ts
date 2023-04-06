@@ -79,6 +79,10 @@ ipcMain.on('close-main', (event) => {
     main.close();
 });
 
+ipcMain.on('open-tab', (event, tabId: number) => {
+    logger.logMessage(`Open tab with id ${tabId}`);
+});
+
 ipcMain.on('tab-deleted', (event, tabId: number) => {
     TabManager.deleteTab(tabId);
 });
