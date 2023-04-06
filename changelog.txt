@@ -1,7 +1,7 @@
 [2.0.0] => {
     Features => {
         [DONE] Custom App Frame.
-        [WORKING] New Tab System.
+        [DONE] New Tab System.
         [PLANNED] New Settings Menu.
         [PLANNED] New Sidebar.
         [PLANNED] Search History.
