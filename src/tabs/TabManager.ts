@@ -1,5 +1,6 @@
 import { BrowserWindow } from 'electron';
 import BrowserTab from './BrowserTab.js';
+import { logger } from '../index.js';
 
 class TabManager {
     private tabs: BrowserTab[];
@@ -19,9 +20,25 @@ class TabManager {
     }
 
     /**
+     * Opens a tab, previously created and stored in the
+     * tabs array.
+     */
+    public openTab(tabId: number): void {
+        let tab = this.tabs[tabId];
+        if (tab) {
+            tab.build();
+        } else {
+            logger.logError(`TAB NOT FOUND. Tab id ${tabId} was not found.`, {
+                file: 'TabManager.ts',
+                line: 27
+            });
+        }
+    }
+
+    /**
      * Deletes a tab from the tab list.
      */
-    public deleteTab(tabId: number) {
+    public deleteTab(tabId: number): void {
         this.tabs = this.tabs.filter((tab) => {
             return tab.TabId != tabId;
         });
