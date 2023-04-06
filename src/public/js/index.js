@@ -17,6 +17,14 @@ document.getElementById('close').addEventListener('click', () => {
 
 /* Tabs */
 ipcRenderer.on('tab-builded', (event, tabId) => {
+    /** @type {NodeListOf<HTMLParagraphElement} */
+    let prevTabs = document.querySelectorAll(".tab-title");
+    for (let i = 0; i < prevTabs.length; i++) {
+        if (prevTabs[i].dataset.tabId == tabId) {
+            return;
+        }
+    }
+    
     const tabTemplate = `
         <div class="tab">
             <p class="tab-title" data-tab-id="${tabId}">Tab ${tabId + 1}</p>
