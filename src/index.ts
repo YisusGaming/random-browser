@@ -8,7 +8,7 @@ import path from 'path';
 
 // Instance of the logger class for future console logs.
 // Also exports the instance for use in other files
-// without the need of reinstance the class again.
+// without the need to reinstance the class again.
 export const logger = new Logger(configs.version);
 
 const publicPath = path.join(__dirname, 'public');
