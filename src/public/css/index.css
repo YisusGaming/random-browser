@@ -50,10 +50,16 @@ body:has(:focus) {
     max-width: 100px;
     margin: 0 4px;
     background: #202020;
+    transition: 250ms;
 }
 
 .tab p {
+    cursor: pointer;
     font-family: 'Raleway', sans-serif;
+}
+
+.tab:has(p:hover) {
+    background: #505050;
 }
 
 .tab button {
