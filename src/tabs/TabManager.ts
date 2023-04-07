@@ -15,8 +15,6 @@ class TabManager {
         let tabId = this.tabs.length;
         let tab = new BrowserTab(url, parent, tabId);
         this.tabs.push(tab);
-        console.log("createTab:");
-        console.log(this.tabs);
 
         return tab;
     }
@@ -44,11 +42,9 @@ class TabManager {
      * Deletes a tab from the tab list.
      */
     public deleteTab(tabId: number): void {
-        console.log("deleteTab:");
         this.tabs = this.tabs.filter((tab, index) => {
             return tab.TabId != tabId;
         });
-        console.log(this.tabs);
     }
 }
 
