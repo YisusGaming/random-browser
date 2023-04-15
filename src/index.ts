@@ -19,8 +19,10 @@ logger.logMessage(`Looking for user's configs in ${userConfigPath}`);
 let main : BrowserWindow;
 let tabModal : BrowserWindow;
 let backgroundSelect : BrowserWindow;
+let appLoader : BrowserWindow;
 app.on('ready', () => {
     logger.logMessage(`App is ready.`);
+    spawnAppLoader();
     main = new BrowserWindow({
         title: 'Random Browser - Loading...',
         webPreferences: {
@@ -35,6 +37,7 @@ app.on('ready', () => {
     main.on('ready-to-show', () => {
         logger.logMessage(`Main window ready to show.`);
         main.show();
+        appLoader.destroy();
         main.maximize();
 
         const rawConfig = fs.readFileSync(userConfigPath, { encoding: 'utf-8' });
@@ -43,6 +46,23 @@ app.on('ready', () => {
         main.webContents.send('update-background', configs.background);
     });
 });
+
+function spawnAppLoader() {
+    logger.logMessage("App loader spawned.");
+    appLoader = new BrowserWindow({
+        title: 'Random Browser - Loading...',
+        closable: false,
+        maximizable: false,
+        resizable: false,
+        height: 400,
+        width: 320
+    });
+    appLoader.loadFile(path.join(publicPath, 'loader.html'));
+    appLoader.on('closed', () => {
+        logger.logMessage("App loader closed.");
+        main.flashFrame(true);
+    });
+}
 
 function spawnTab(url: string) {
     // Create a new tab and right after build it so the tab shows up.
