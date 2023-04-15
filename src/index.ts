@@ -163,6 +163,6 @@ ipcMain.on('clear-background', (event) => {
     main.loadFile(path.join(publicPath, 'index.html'));
 });
 
-ipcMain.on('apploader-reference', (event) => {
-    appLoader.webContents.send('apploader-reference', appLoader);
+ipcMain.on('minimize-apploader', (event) => {
+    appLoader.minimize();
 });
