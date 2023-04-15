@@ -51,6 +51,10 @@ app.on('ready', () => {
 function spawnAppLoader() {
     logger.logMessage("App loader spawned.");
     appLoader = new BrowserWindow({
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        },
         title: 'Random Browser - Loading...',
         frame: false,
         closable: false,
