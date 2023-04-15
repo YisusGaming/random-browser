@@ -2,7 +2,7 @@
     Features => {
         [DONE] Custom App Frame.
         [DONE] New Tab System.
-        [WORKING] Initial App Loader.
+        [DONE] Initial App Loader.
 		[PLANNED] Download Progress Bar.
         [PLANNED] New Settings Menu.
         [PLANNED] New Sidebar.

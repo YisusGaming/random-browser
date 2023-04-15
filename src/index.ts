@@ -38,7 +38,7 @@ app.on('ready', () => {
         logger.logMessage(`Main window ready to show.`);
         main.show();
         // ! Make sure to destoy appLoader in production.
-        // appLoader.destroy();
+        appLoader.destroy();
         main.maximize();
 
         const rawConfig = fs.readFileSync(userConfigPath, { encoding: 'utf-8' });
