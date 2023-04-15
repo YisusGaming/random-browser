@@ -37,7 +37,7 @@ app.on('ready', () => {
     main.on('ready-to-show', () => {
         logger.logMessage(`Main window ready to show.`);
         main.show();
-        // ! Make sure to destoy appLoader on production.
+        // ! Make sure to destoy appLoader in production.
         // appLoader.destroy();
         main.maximize();
 
@@ -52,6 +52,7 @@ function spawnAppLoader() {
     logger.logMessage("App loader spawned.");
     appLoader = new BrowserWindow({
         title: 'Random Browser - Loading...',
+        frame: false,
         closable: false,
         maximizable: false,
         resizable: false,
