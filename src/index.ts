@@ -162,3 +162,7 @@ ipcMain.on('clear-background', (event) => {
     main.webContents.send('update-background', '');
     main.loadFile(path.join(publicPath, 'index.html'));
 });
+
+ipcMain.on('apploader-reference', (event) => {
+    appLoader.webContents.send('apploader-reference', appLoader);
+});
