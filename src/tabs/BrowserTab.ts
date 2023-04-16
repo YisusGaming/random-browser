@@ -1,4 +1,5 @@
-import { BrowserWindow, Menu, MenuItemConstructorOptions } from 'electron';
+import { BrowserWindow, Menu, MenuItemConstructorOptions, webContents } from 'electron';
+import DownloadHandler from './downloads/DownloadHandler.js';
 
 /**
  * The BrowserTab class.
@@ -148,6 +149,10 @@ export default class BrowserTab {
             this.currentUrl = index >= 0 ? index : 0;
 
             console.log(this.visitedUrls, this.currentUrl);
+        });
+
+        tabModal.webContents.session.on('will-download', (event, item, webContents) => {
+            DownloadHandler.handleDownload(event, item, webContents, tabModal);
         });
 
         // Center the tab modal if the main window is maximized to make sure it fills all the screen.
