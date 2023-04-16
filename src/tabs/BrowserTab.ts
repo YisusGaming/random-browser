@@ -97,6 +97,9 @@ export default class BrowserTab {
                         role: 'close'
                     },
                     {
+                        role: 'reload'
+                    },
+                    {
                         label: `Zoom (${Math.floor(window.webContents.zoomFactor * 100)}%)`,
                         submenu: [
                             {
