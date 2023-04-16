@@ -3,7 +3,7 @@
         [DONE] Custom App Frame.
         [DONE] New Tab System.
         [DONE] Initial App Loader.
-		[PLANNED] Download Progress Bar.
+		[WORKING] Download Progress Bar.
         [PLANNED] New Settings Menu.
         [PLANNED] New Sidebar.
         [PLANNED] Search History.
