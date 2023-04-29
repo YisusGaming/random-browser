@@ -20,6 +20,7 @@ let main : BrowserWindow;
 let tabModal : BrowserWindow;
 let backgroundSelect : BrowserWindow;
 let appLoader : BrowserWindow;
+let downloadWindow : BrowserWindow;
 app.on('ready', () => {
     logger.logMessage(`App is ready.`);
     spawnAppLoader();
@@ -73,6 +74,29 @@ function spawnAppLoader() {
 function spawnTab(url: string) {
     // Create a new tab and right after build it so the tab shows up.
     tabModal = TabManager.createTab(url, main).build();
+}
+
+/**
+ * Spanws the download window. It contains
+ * information such as filename and download progress, as well
+ * contains some actions like cancel, pause, and resume download.
+ */
+export function spawnDownloadWindow() {
+    downloadWindow = new BrowserWindow({
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        },
+        title: 'Download',
+        parent: main,
+        minimizable: false,
+        maximizable: false,
+        closable: false,
+        resizable: false,
+        height: 480,
+        width: 600
+    });
+    main.loadFile(path.join(publicPath, 'download.html'));
 }
 
 function selectBackground() {
