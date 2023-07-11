@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu, MenuItemConstructorOptions } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, DownloadItem } from 'electron';
 import Logger from './logs/Logger.js';
 import TabManager from './tabs/TabManager.js';
 import configs from './config/app.json';
@@ -78,10 +78,12 @@ function spawnTab(url: string) {
 
 /**
  * Spanws the download window. It contains
- * information such as filename and download progress, as well
+ * information such as filename and download progress, also
  * contains some actions like cancel, pause, and resume download.
+ * 
+ * @param item The item being downloaded.
  */
-export function spawnDownloadWindow() {
+export function spawnDownloadWindow(item: DownloadItem) {
     downloadWindow = new BrowserWindow({
         webPreferences: {
             nodeIntegration: true,
@@ -96,7 +98,8 @@ export function spawnDownloadWindow() {
         height: 480,
         width: 600
     });
-    main.loadFile(path.join(publicPath, 'download.html'));
+    downloadWindow.loadFile(path.join(publicPath, 'download.html'));
+    downloadWindow.webContents.send('download-item', item);
 }
 
 function selectBackground() {
