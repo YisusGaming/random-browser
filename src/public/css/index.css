@@ -188,7 +188,7 @@ body:has(:focus) {
     padding: 5px;
 }
 
-#about-btn {
+#downloads-btn {
     position: absolute;
     top: 40px;
     left: 0;
@@ -202,11 +202,11 @@ body:has(:focus) {
     transition: all 250ms;
 }
 
-#about-btn:hover {
+#downloads-btn:hover {
     color: #ffffff;
 }
 
-#about-btn:active {
+#downloads-btn:active {
     color: #000000;
 }
 

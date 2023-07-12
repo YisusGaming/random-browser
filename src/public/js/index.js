@@ -52,9 +52,9 @@ ipcRenderer.on('update-background', (event, file) => {
     updateBackground(file);
 });
 
-/* Learn Page */
-document.getElementById('about-btn').addEventListener('click', (event) => {
-    ipcRenderer.send('new-search', 'https://yisusgaming.github.io/random-browser-page');
+/* Downloads Menu */
+document.getElementById('downloads-btn').addEventListener('mouseover', (event) => {
+    alert('download menu');
 });
 
 /* Browser Background */
