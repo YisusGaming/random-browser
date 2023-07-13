@@ -210,6 +210,30 @@ body:has(:focus) {
     color: #000000;
 }
 
+#downloads-menu {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    background: #303030;
+    color: #ffffff;
+    width: 320px;
+    height: 200px;
+    padding: 8px;
+    top: 68px;
+    left: 20px;
+    overflow-y: scroll;
+}
+
+#downloads-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+#downloads-menu::-webkit-scrollbar-thumb {
+    background: white;
+}
+
 #background-btn {
     position: absolute;
     top: 40px;
