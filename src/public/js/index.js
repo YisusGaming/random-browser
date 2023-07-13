@@ -54,7 +54,11 @@ ipcRenderer.on('update-background', (event, file) => {
 
 /* Downloads Menu */
 document.getElementById('downloads-btn').addEventListener('mouseover', (event) => {
-    alert('download menu');
+    const menu = document.getElementById('downloads-menu');
+    menu.style.display = 'flex';
+    menu.addEventListener('mouseleave', (event) => {
+        menu.style.display = 'none';
+    });
 });
 
 /* Browser Background */
