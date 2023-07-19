@@ -18,9 +18,13 @@ document.getElementById('close').addEventListener('click', () => {
 /* Tabs */
 ipcRenderer.on('tab-builded', (event, tabId) => {
     /** @type {NodeListOf<HTMLParagraphElement} */
+    // we gather all tabs by their .tab-title element since
+    // it contains the necessary dataset for this to work.
     let prevTabs = document.querySelectorAll(".tab-title");
+    
     for (let i = 0; i < prevTabs.length; i++) {
         if (prevTabs[i].dataset.tabId == tabId) {
+            // we return if the tab was already in the tab container
             return;
         }
     }
