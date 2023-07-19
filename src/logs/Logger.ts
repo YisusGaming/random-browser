@@ -40,14 +40,14 @@ export default class Logger {
     /**
      * Prints an `string` or an `Error` to `stderr`.
      */
-    logError(err: string | Error, origin: { file: string; line: number }): void {
+    logError(err: string | Error, origin: { file: string }): void {
         if (typeof err == 'string') {
             console.error(
-                `[ERR!] => ${err} | ${this.browserVersion} [${origin.file}:${origin.line}]`
+                `[ERR!] => ${err} | ${this.browserVersion} [${origin.file}]`
             );
         } else {
             console.error(
-                `[ERR!] => ${err.name}: ${err.message} | ${this.browserVersion} [${origin.file}:${origin.line}]`
+                `[ERR!] => ${err.name}: ${err.message} | ${this.browserVersion} [${origin.file}]`
             );
         }
     }

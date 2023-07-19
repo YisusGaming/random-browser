@@ -72,10 +72,13 @@ function spawnAppLoader() {
 }
 
 function spawnTab(url: string) {
-    // Create a new tab and right after build it so the tab shows up.
     tabModal = TabManager.createTab(url, main).build();
 }
 
+/**
+ * Spawns a Browser Window for the user to select a custom
+ * background.
+ */
 function selectBackground() {
     backgroundSelect = new BrowserWindow({
         title: "Change Browser's Background",

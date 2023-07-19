@@ -3,6 +3,8 @@ import DownloadHandler from './downloads/DownloadHandler.js';
 
 /**
  * The BrowserTab class.
+ * @since v2.0.0
+ * 
  * This class shouldn't be instanced directly. Use `TabManager.createTab` instead.
  */
 export default class BrowserTab {

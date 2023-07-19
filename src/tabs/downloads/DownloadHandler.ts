@@ -1,6 +1,12 @@
 import { BrowserWindow, DownloadItem, Event, WebContents } from "electron";
 import { logger } from "../../index.js";
 
+/**
+ * DownloadHandler class
+ * @since v2.0.0
+ * 
+ * Handles downloads, typically triggered in tabs.
+ */
 class DownloadHandler {
     /**
      * Handles downloads in tabs,
