@@ -20,7 +20,7 @@ class TabManager {
      * @param parent The parent of this tab. In most cases it'll be the main browser's window.
      */
     public createTab(url: string, parent: BrowserWindow): BrowserTab {
-        let tabId = this.tabs.length;
+        let tabId = this.generateId();
         let tab = new BrowserTab(url, parent, tabId);
         this.tabs.push(tab);
 
@@ -52,6 +52,19 @@ class TabManager {
         this.tabs = this.tabs.filter((tab, index) => {
             return tab.TabId != tabId;
         });
+    }
+
+    /**
+     * Generates an unique ID for a tab.
+     */
+    private generateId(): number {
+        let ids : Array<number> = [];
+        this.tabs.forEach((tab) => {
+            ids.push(tab.TabId);
+        });
+
+        ids.sort(); // Sort in a way that the bigger ID is the last element of the array.
+        return ids.pop()! + 1 || 0; // Return the last element of the array (bigger id) + 1, or return 0 if the array is empty.
     }
 }
 
