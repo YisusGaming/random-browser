@@ -6,7 +6,7 @@
 
 [![Build Test](https://github.com/YisusGaming/random-browser/actions/workflows/integrate.yml/badge.svg?branch=main)](https://github.com/YisusGaming/random-browser/actions/workflows/integrate.yml)
 
-| Cotents | Link |
+| Contents | Link |
 |--------|------|
 |Installation|[Go](#installation)|
 |Development setup |[Go](#development-setup)|
