@@ -56,6 +56,7 @@ app.on('ready', () => {
  * @throws {ReferenceError} if the string passed as event is empty. 
  */
 export function mainWindowGateway(event: string, ...args: any[]): void {
+    logger.tempLogMessage("Main Gateway");
     if (event.trim() == '') throw new ReferenceError("Event cannot be empty.");
 
     main.webContents.send(event, args);

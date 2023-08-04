@@ -65,6 +65,11 @@ document.getElementById('downloads-btn').addEventListener('mouseover', (event) =
     });
 });
 
+/* Download Handler */
+ipcRenderer.on('new-active-download', (event, /** @type {{id: number, filename: string}} */ download) => {
+    alert('Download started');
+});
+
 /* Browser Background */
 document.getElementById('background-btn').addEventListener('click', (event) => {
     ipcRenderer.send('new-background-image');
