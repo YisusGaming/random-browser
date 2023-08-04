@@ -84,7 +84,7 @@ function spawnAppLoader() {
     });
 }
 
-function spawnTab(url: string) {
+export function spawnTab(url: string) {
     tabModal = TabManager.createTab(url, main).build();
 }
 
