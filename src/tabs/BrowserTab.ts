@@ -1,5 +1,6 @@
 import { BrowserWindow, Menu, MenuItemConstructorOptions, webContents } from 'electron';
 import DownloadHandler from './downloads/DownloadHandler.js';
+import { spawnTab } from '../index.js';
 
 /**
  * The BrowserTab class.
@@ -156,6 +157,10 @@ export default class BrowserTab {
             console.log(this.visitedUrls, this.currentUrl);
         });
 
+        tabModal.webContents.addListener('did-create-window', (window, details) => {
+            window.destroy(); // Destroying the created window
+            spawnTab(details.url); // Opening a tab with the destroyed window's url.
+        });
         tabModal.webContents.session.on('will-download', (event, item, webContents) => {
             DownloadHandler.handleDownload(event, item, webContents, tabModal);
         });
