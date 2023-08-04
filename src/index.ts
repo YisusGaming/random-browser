@@ -84,6 +84,10 @@ function spawnAppLoader() {
     });
 }
 
+/**
+ * Createsa a Tab and builds it.
+ * Tabs will show up once they're built.
+ */
 export function spawnTab(url: string) {
     tabModal = TabManager.createTab(url, main).build();
 }
