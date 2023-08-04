@@ -9,7 +9,7 @@ import { logger, mainWindowGateway } from "../../index.js";
  */
 class DownloadHandler {
 
-    private activeDownloads: {id: number, filename: string}[] = [];
+    private activeDownloads: Array<{id: number, filename: string}> = [];
 
     /**
      * Handles downloads in tabs,
@@ -22,16 +22,17 @@ class DownloadHandler {
             id: this.generateId(),
             filename: item.getFilename()
         });
-        mainWindowGateway('new-active-download', this.activeDownloads);
+        logger.logMessage(`${this.activeDownloads}`);
+        mainWindowGateway('active-downloads-update', this.activeDownloads);
 
         item.on('updated', (event, state) => {
             if (state == 'interrupted') {
-                logger.logWarning("Donwload interrupted but can be resumed.");
+                // logger.logWarning("Donwload interrupted but can be resumed.");
             } else if (state == 'progressing') {
                 if (item.isPaused()) {
-                    logger.logMessage("Download paused.");
+                    // logger.logMessage("Download paused.");
                 } else {
-                    logger.logMessage(`Download progress:\n${item.getReceivedBytes()} bytes out of ${item.getTotalBytes()}`);
+                    // logger.logMessage(`Download progress:\n${item.getReceivedBytes()} bytes out of ${item.getTotalBytes()}`);
                 }
             }
         });
@@ -46,7 +47,7 @@ class DownloadHandler {
     }
 
     /**
-     * Generates an unique ID for a tab.
+     * Generates an unique ID for a download.
      */
     private generateId(): number {
         let ids : Array<number> = [];

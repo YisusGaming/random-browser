@@ -66,8 +66,15 @@ document.getElementById('downloads-btn').addEventListener('mouseover', (event) =
 });
 
 /* Download Handler */
-ipcRenderer.on('new-active-download', (event, /** @type {{id: number, filename: string}} */ download) => {
-    alert('Download started');
+ipcRenderer.on('active-downloads-update', (event, /** @type {Array<{id: number, filename: string}>} */ downloads) => {
+    const downloadMenu = document.getElementById('downloads-menu');
+
+    if (downloads.length <= 0) {
+        downloadMenu.innerHTML = `<h2>No active downloads.</h2>`;
+        return;
+    }
+
+    downloadMenu.innerHTML = `There is ${downloads.length} active downloads.`;
 });
 
 /* Browser Background */
