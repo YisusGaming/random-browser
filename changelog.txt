@@ -5,9 +5,10 @@
         [DONE] Initial App Loader.
 		[WORKING] Download Progress Bar.
         [PLANNED] New Settings Menu.
-        [PLANNED] New Sidebar.
         [PLANNED] Search History.
-        [PLANNED] Featured Sites.
+    }
+    Changes => {
+        [PLANNED] Clean all cookies and sessions on exit.
     }
     Fixes => {
         [DONE] Fixed Random Browser's Page Link.
