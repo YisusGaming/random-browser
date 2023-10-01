@@ -56,27 +56,6 @@ ipcRenderer.on('update-background', (event, file) => {
     updateBackground(file);
 });
 
-/* Downloads Menu */
-document.getElementById('downloads-btn').addEventListener('mouseover', (event) => {
-    const menu = document.getElementById('downloads-menu');
-    menu.style.display = 'flex';
-    menu.addEventListener('mouseleave', (event) => {
-        menu.style.display = 'none';
-    });
-});
-
-/* Download Handler */
-ipcRenderer.on('active-downloads-update', (event, /** @type {Array<{id: number, filename: string}>} */ downloads) => {
-    const downloadMenu = document.getElementById('downloads-menu');
-
-    if (downloads.length <= 0) {
-        downloadMenu.innerHTML = `<h2>No active downloads.</h2>`;
-        return;
-    }
-
-    downloadMenu.innerHTML = `There is ${downloads.length} active downloads.`;
-});
-
 /* Browser Background */
 document.getElementById('background-btn').addEventListener('click', (event) => {
     ipcRenderer.send('new-background-image');

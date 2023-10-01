@@ -188,52 +188,6 @@ body:has(:focus) {
     padding: 5px;
 }
 
-#downloads-btn {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    font-size: 2.3rem;
-    background: transparent;
-    color: #707070;
-    text-decoration: none;
-    padding: 10px;
-    border: none;
-    transform-origin: center;
-    transition: all 250ms;
-}
-
-#downloads-btn:hover {
-    color: #ffffff;
-}
-
-#downloads-btn:active {
-    color: #000000;
-}
-
-#downloads-menu {
-    position: absolute;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Raleway', sans-serif;
-    background: #303030;
-    color: #ffffff;
-    width: 320px;
-    height: 200px;
-    padding: 8px;
-    top: 68px;
-    left: 20px;
-    overflow-y: scroll;
-}
-
-#downloads-menu::-webkit-scrollbar {
-    width: 4px;
-}
-
-#downloads-menu::-webkit-scrollbar-thumb {
-    background: white;
-}
-
 #background-btn {
     position: absolute;
     top: 40px;

@@ -53,11 +53,11 @@ app.on('ready', () => {
  * Works as a *bridge* or *gateway* that allows communication with main's webCotents.
  * @param event The event that will be send to main via `webContents.send`
  * 
- * @throws {ReferenceError} if the string passed as event is empty. 
+ * @throws {EvalError} if the string passed as event is empty. 
  */
 export function mainWindowGateway(event: string, ...args: any[]): void {
-    logger.tempLogMessage("Main Gateway");
-    if (event.trim() == '') throw new ReferenceError("Event cannot be empty.");
+    logger.tempLogMessage(`Main Gateway used, event: ${event}`);
+    if (event.trim() == '') throw new EvalError("Event cannot be empty.");
 
     main.webContents.send(event, args);
 }

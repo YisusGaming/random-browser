@@ -1,5 +1,12 @@
 import { BrowserWindow, DownloadItem, Event, WebContents } from "electron";
-import { logger, mainWindowGateway } from "../../index.js";
+import { logger } from "../../index.js";
+
+export interface Download {
+    id: number;
+    filename: string,
+    totalBytes: number,
+    receivedBytes: number
+}
 
 /**
  * DownloadHandler class
@@ -9,7 +16,7 @@ import { logger, mainWindowGateway } from "../../index.js";
  */
 class DownloadHandler {
 
-    private activeDownloads: Array<{id: number, filename: string}> = [];
+    private activeDownloads: Download[] = [];
 
     /**
      * Handles downloads in tabs,
@@ -17,13 +24,13 @@ class DownloadHandler {
      */
     public handleDownload(event: Event, item: DownloadItem, webContents: WebContents, tab: BrowserWindow): void {
         logger.logMessage(`Download triggered.`);
-        
+
         this.activeDownloads.push({
             id: this.generateId(),
-            filename: item.getFilename()
+            filename: item.getFilename(),
+            totalBytes: item.getTotalBytes(),
+            receivedBytes: item.getReceivedBytes()
         });
-        logger.logMessage(`${this.activeDownloads}`);
-        mainWindowGateway('active-downloads-update', this.activeDownloads);
 
         item.on('updated', (event, state) => {
             if (state == 'interrupted') {
