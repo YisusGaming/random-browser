@@ -1,11 +1,14 @@
-import { BrowserWindow, DownloadItem, Event, WebContents } from "electron";
-import { logger } from "../../index.js";
+import { DownloadItem, BrowserWindow } from "electron";
+import { logger, publicPath } from "../../index.js";
+
+import path from 'path';
 
 export interface Download {
     id: number;
     filename: string,
     totalBytes: number,
-    receivedBytes: number
+    receivedBytes: number,
+    item: DownloadItem
 }
 
 /**
@@ -14,25 +17,31 @@ export interface Download {
  * 
  * Handles downloads, typically triggered in tabs.
  */
-class DownloadHandler {
-
-    private activeDownloads: Download[] = [];
-
+export default class DownloadHandler {
     /**
-     * Handles downloads in tabs,
-     * this function should be called in a `will-download` electron event.
+     * Creates a new DownloadHandler for an specific download.
+     * Once a DownloadHandler is constructed, it automatically
+     * starts handling it. This creates a window where the progress
+     * is shown to the user, and other things.
+     * 
+     * @param {DownloadItem} item The item being downloaded.
      */
-    public handleDownload(event: Event, item: DownloadItem, webContents: WebContents, tab: BrowserWindow): void {
+    constructor(item: DownloadItem, tab: BrowserWindow) {
         logger.logMessage(`Download triggered.`);
 
-        this.activeDownloads.push({
-            id: this.generateId(),
-            filename: item.getFilename(),
-            totalBytes: item.getTotalBytes(),
-            receivedBytes: item.getReceivedBytes()
+        let downloadModal = new BrowserWindow({
+            title: 'Downloading...',
+            parent: tab,
+            modal: true,
+            resizable: false,
+            height: 180,
+            width: 280
         });
+        downloadModal.loadFile(path.join(publicPath, "download.html"));
 
-        item.on('updated', (event, state) => {
+        logger.logMessage(`Spawned download modal.`);
+
+        item.on('updated', (_event, state) => {
             if (state == 'interrupted') {
                 // logger.logWarning("Donwload interrupted but can be resumed.");
             } else if (state == 'progressing') {
@@ -44,7 +53,7 @@ class DownloadHandler {
             }
         });
 
-        item.once('done', (event, state) => {
+        item.once('done', (_event, state) => {
             if (state == 'completed') {
                 logger.logMessage(`Download completed succesfully.`);
             } else {
@@ -52,19 +61,4 @@ class DownloadHandler {
             }
         });
     }
-
-    /**
-     * Generates an unique ID for a download.
-     */
-    private generateId(): number {
-        let ids : Array<number> = [];
-        this.activeDownloads.forEach((download) => {
-            ids.push(download.id);
-        });
-
-        ids.sort(); // Sort in a way that the bigger ID is the last element of the array.
-        return ids.pop()! + 1 || 0; // Return the last element of the array (bigger id) + 1, or return 0 if the array is empty.
-    }
 }
-
-export default new DownloadHandler();

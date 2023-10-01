@@ -162,7 +162,7 @@ export default class BrowserTab {
             spawnTab(details.url); // Opening a tab with the destroyed window's url.
         });
         tabModal.webContents.session.on('will-download', (event, item, webContents) => {
-            DownloadHandler.handleDownload(event, item, webContents, tabModal);
+            new DownloadHandler(item, tabModal);
         });
 
         // Center the tab modal if the main window is maximized to make sure it fills all the screen.
