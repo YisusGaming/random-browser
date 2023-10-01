@@ -20,6 +20,7 @@ export interface Download {
 export default class DownloadHandler {
     /**
      * Creates a new DownloadHandler for an specific download.
+     * 
      * Once a DownloadHandler is constructed, it automatically
      * starts handling it. This creates a window where the progress
      * is shown to the user, and other things.
@@ -34,21 +35,30 @@ export default class DownloadHandler {
             parent: tab,
             modal: true,
             resizable: false,
-            height: 180,
-            width: 280
+            height: 440,
+            width: 480,
+            webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false
+            }
         });
         downloadModal.loadFile(path.join(publicPath, "download.html"));
+        downloadModal.webContents.send('title-update', `${item.getFilename()}...`);
 
         logger.logMessage(`Spawned download modal.`);
 
         item.on('updated', (_event, state) => {
             if (state == 'interrupted') {
-                // logger.logWarning("Donwload interrupted but can be resumed.");
+                downloadModal.webContents.send('status-update', 'Status: Interrupted.');
             } else if (state == 'progressing') {
                 if (item.isPaused()) {
-                    // logger.logMessage("Download paused.");
+                    downloadModal.webContents.send('status-update', 'Status: Paused.');
                 } else {
-                    // logger.logMessage(`Download progress:\n${item.getReceivedBytes()} bytes out of ${item.getTotalBytes()}`);
+                    downloadModal.webContents.send('status-update', 'Status: Downloading.');
+                    downloadModal.webContents.send('progress-update',
+                        `${Math.round((item.getReceivedBytes() / item.getTotalBytes()) * 100)}%`,
+                        `${item.getReceivedBytes()} bytes out of ${item.getTotalBytes()} bytes.`
+                    );
                 }
             }
         });
@@ -56,7 +66,9 @@ export default class DownloadHandler {
         item.once('done', (_event, state) => {
             if (state == 'completed') {
                 logger.logMessage(`Download completed succesfully.`);
+                downloadModal.webContents.send('status-update', 'Status: Completed.');
             } else {
+                downloadModal.webContents.send('status-update', `Status: Failed, ${state}.`);
                 logger.logWarning(`Download failed: ${state}`);
             }
         });
