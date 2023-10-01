@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu, DownloadItem } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu } from 'electron';
 import Logger from './logs/Logger.js';
 import TabManager from './tabs/TabManager.js';
 import configs from './config/app.json';
@@ -11,7 +11,7 @@ import path from 'path';
 // without the need to reinstance the class again.
 export const logger = new Logger(configs.version);
 
-const publicPath = path.join(__dirname, 'public');
+export const publicPath = path.join(__dirname, 'public');
 const userConfigPath = path.join(__dirname, 'config', 'user.json');
 // console.log(`Looking for user's configs in ${userConfigPath}`);
 logger.logMessage(`Looking for user's configs in ${userConfigPath}`);
