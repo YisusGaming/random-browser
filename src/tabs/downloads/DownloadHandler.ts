@@ -25,18 +25,15 @@ export default class DownloadHandler {
      * starts handling it. This creates a window where the progress
      * is shown to the user, and other things.
      * 
-     * @param {DownloadItem} item The item being downloaded.
+     * @param item The item being downloaded.
+     * @param parent The parent for this handler's progress window.
      */
-    constructor(item: DownloadItem, tab: BrowserWindow) {
+    constructor(item: DownloadItem, parent: BrowserWindow) {
         logger.logMessage(`Download triggered.`);
 
-        tab.on('close', () => {
-            item.cancel();
-        });
-
-        let downloadModal = new BrowserWindow({
+        let downloadModal: BrowserWindow = new BrowserWindow({
             title: 'Downloading...',
-            parent: tab,
+            parent: parent,
             resizable: false,
             height: 300,
             width: 400,
@@ -45,7 +42,19 @@ export default class DownloadHandler {
                 contextIsolation: false
             }
         });
-        downloadModal.on('close', () => {item.cancel(); return;});
+
+        parent.on('close', () => {
+            item.cancel();
+            downloadModal.destroy();
+            return;
+        });
+
+        downloadModal.on('close', () => {
+            item.cancel();
+            downloadModal.destroy();
+            return;
+        });
+
         downloadModal.loadFile(path.join(publicPath, "download.html"));
 
         logger.logMessage(`Spawned download window.`);
