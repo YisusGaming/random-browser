@@ -79,10 +79,12 @@ ipcRenderer.on('app-version', (event, version) => {
 });
 
 /**
- * @param {string} file
+ * @param {string} url
  */
-function updateBackground(file) {
-    const parsedUrl = new URL(file);
+function updateBackground(url) {
+    if (url.trim() == "") return;
+    
+    const parsedUrl = new URL(url);
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundImage = `url('${parsedUrl.toString()}')`;
 }
