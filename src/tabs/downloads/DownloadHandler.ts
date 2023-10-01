@@ -33,21 +33,20 @@ export default class DownloadHandler {
         let downloadModal = new BrowserWindow({
             title: 'Downloading...',
             parent: tab,
-            modal: true,
             resizable: false,
-            height: 440,
-            width: 480,
+            height: 300,
+            width: 400,
             webPreferences: {
                 nodeIntegration: true,
                 contextIsolation: false
             }
         });
         downloadModal.loadFile(path.join(publicPath, "download.html"));
-        downloadModal.webContents.send('title-update', `${item.getFilename()}...`);
 
-        logger.logMessage(`Spawned download modal.`);
+        logger.logMessage(`Spawned download window.`);
 
         item.on('updated', (_event, state) => {
+            downloadModal.webContents.send('title-update', `${item.getFilename()}...`);
             if (state == 'interrupted') {
                 downloadModal.webContents.send('status-update', 'Status: Interrupted.');
             } else if (state == 'progressing') {
@@ -56,7 +55,7 @@ export default class DownloadHandler {
                 } else {
                     downloadModal.webContents.send('status-update', 'Status: Downloading.');
                     downloadModal.webContents.send('progress-update',
-                        `${Math.round((item.getReceivedBytes() / item.getTotalBytes()) * 100)}%`,
+                        `Progress: ${Math.round((item.getReceivedBytes() / item.getTotalBytes()) * 100)}%`,
                         `${item.getReceivedBytes()} bytes out of ${item.getTotalBytes()} bytes.`
                     );
                 }

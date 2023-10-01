@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Raleway', sans-serif;
+    background: #202020;
+    color: #ffffff;
+}
+
+.frame {
+    padding: 20px;
+    border: #303030 2px solid;
+    border-radius: 8px;
+}
+
+#download-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background: transparent;
+    color: #ffffff;
+    padding: 8px;
+    margin: 0 4px;
+    border-radius: 8px;
+    border: #ffffff 2px solid;
+    cursor: pointer;
+    transition: 250ms;
+}
+
+button#btn-resume {
+    border-color: #101060;
+}
+
+button#btn-resume:hover {
+    background: #101060;
+}
+
+button#btn-pause {
+    border-color: #dddd00;
+}
+
+button#btn-pause:hover {
+    background: #dddd00;
+}
+
+button#btn-cancel {
+    border-color: #dd0020;
+}
+
+button#btn-cancel:hover {
+    background: #dd0020;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .7;
+}

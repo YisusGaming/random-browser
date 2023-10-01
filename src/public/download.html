@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downloading...</title>
+    <link rel="stylesheet" href="css/download.css">
 </head>
 <body>
     <div class="frame">
@@ -13,9 +14,11 @@
             <h3 id="download-progress">Progress: ?</h3>
             <p id="download-bytes">0 bytes out of ? bytes</p>
         </div>
-        <button disabled>Resume</button>
-        <button>Pause</button>
-        <button>Cancel</button>
+        <div class="btns">
+            <button id="btn-resume" disabled>Resume</button>
+            <button id="btn-pause">Pause</button>
+            <button id="btn-cancel">Cancel</button>
+        </div>
     </div>
 
     <script src="js/download.js"></script>
