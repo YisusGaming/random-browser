@@ -1,4 +1,4 @@
-import { DownloadItem, BrowserWindow } from "electron";
+import { DownloadItem, BrowserWindow, dialog } from "electron";
 import { logger, publicPath } from "../../index.js";
 
 import path from 'path';
@@ -30,6 +30,10 @@ export default class DownloadHandler {
     constructor(item: DownloadItem, tab: BrowserWindow) {
         logger.logMessage(`Download triggered.`);
 
+        tab.on('close', () => {
+            item.cancel();
+        });
+
         let downloadModal = new BrowserWindow({
             title: 'Downloading...',
             parent: tab,
@@ -41,9 +45,27 @@ export default class DownloadHandler {
                 contextIsolation: false
             }
         });
+        downloadModal.on('close', () => {item.cancel(); return;});
         downloadModal.loadFile(path.join(publicPath, "download.html"));
 
         logger.logMessage(`Spawned download window.`);
+
+        downloadModal.webContents.ipc.on('download-resume', () => {
+            if (item.canResume()) {
+                item.resume();
+                return;
+            }
+
+            dialog.showErrorBox("Can't resume", "Download can't be resumed.");
+        });
+
+        downloadModal.webContents.ipc.on('download-pause', () => {
+            item.pause();
+        });
+
+        downloadModal.webContents.ipc.on('download-cancel', () => {
+            item.cancel();
+        });
 
         item.on('updated', (_event, state) => {
             downloadModal.webContents.send('title-update', `${item.getFilename()}...`);
