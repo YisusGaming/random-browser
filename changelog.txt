@@ -3,12 +3,8 @@
         [DONE] Custom App Frame.
         [DONE] New Tab System.
         [DONE] Initial App Loader.
-		[WORKING] Download Progress Bar.
-        [PLANNED] New Settings Menu.
-        [PLANNED] Search History.
-    }
-    Changes => {
-        [PLANNED] Clean all cookies and sessions on exit.
+		[DONE] Download Progress Bar.
+        [DELAYED->v3.0.0] New Settings Menu.
     }
     Fixes => {
         [DONE] Fixed Random Browser's Page Link.
