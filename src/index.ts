@@ -40,7 +40,6 @@ app.on('ready', () => {
         main.show();
         // ! Make sure to destoy appLoader in production.
         appLoader.destroy();
-        main.maximize();
 
         const rawConfig = fs.readFileSync(userConfigPath, { encoding: 'utf-8' });
         const configs = JSON.parse(rawConfig);
