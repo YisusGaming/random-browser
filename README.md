@@ -1,3 +1,17 @@
+# DEV NOTE:
+
+Hey! It's been a long while since I last updated Random Browser. It's currently December 23th 2023, v2.0.0 is finally out, or at least, it'll be soon.
+
+Since the first line of code, Random Browser was just an experiment and I didn't even plan to update it...
+
+But here we are, Random Browser's last release is out.
+
+This version of Random Browser won't receive new features, just small bug fixes (if any).
+
+Note how I said "this version", though. I've been planning to migrate the entire projet to a different framework or programming language.
+
+We'll see...
+
 <div align="center" style="display:flex;flex-direction:column;">
     <h1>Random Browser</h1>
 
