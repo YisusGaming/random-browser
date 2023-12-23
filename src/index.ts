@@ -33,7 +33,7 @@ app.on('ready', () => {
         show: false
     });
     // ! Make sure to set the application menu to null in production.
-    // Menu.setApplicationMenu(null);
+    Menu.setApplicationMenu(null);
     main.loadFile(path.join(publicPath, 'index.html'));
     main.on('ready-to-show', () => {
         logger.logMessage(`Main window ready to show.`);
