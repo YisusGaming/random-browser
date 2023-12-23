@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Browser</title>
     <link rel="stylesheet" href="css/index.css">
-    <!-- USER THEME -->
-    <link rel="stylesheet" href="css/user.css">
 </head>
 <body>
-    <button id="about-btn" title="Learn about Random Browser"><i class="fa-solid fa-house"></i></button>
+    <div class="frame">
+        <div id="tabs-container"></div>
+        <div id="buttons">
+            <button title="Minimize Window" id="minimize">
+                <i class="fa-solid fa-square-minus"></i>
+            </button>
+            <button title="Maxmimize Window" id="maximize">
+                <i class="fa-solid fa-square-plus"></i>
+            </button>
+            <button title="Close Window" id="close">
+                <i class="fa-solid fa-square-xmark"></i>
+            </button>
+        </div>
+    </div>
+
     <button id="background-btn" title="Change background image"><i class="fa-solid fa-sliders"></i></button>
+    
     <div class="wrap">
         <h1 id="legend">Random Browser</h1>
         <form class="search-bar">

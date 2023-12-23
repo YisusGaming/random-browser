@@ -1,4 +1,4 @@
-name: Build Test
+name: build
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test_pull_request:
+  test_build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
